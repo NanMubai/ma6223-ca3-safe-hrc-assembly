@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hrc_sim"
+version = "0.1.0"
+description = "MuJoCo simulation and modeling for safe HRC box-in-box assembly (Franka Panda)"
+requires-python = ">=3.11"
+dependencies = ["mujoco==4.0.1", "numpy", "scipy", "matplotlib", "imageio"]
+
+[tool.setuptools.packages.find]
+include = ["hrc_sim*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

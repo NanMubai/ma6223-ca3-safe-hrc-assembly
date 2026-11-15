@@ -1,0 +1,482 @@
+{
+  "mujoco_version": "4.0.1",
+  "numpy_version": "2.4.6",
+  "random": {
+    "seed": 6223,
+    "n_samples": 1000,
+    "velocity_range_rad_s": [
+      -0.3,
+      0.3
+    ],
+    "inverse_acceleration_range_rad_s2": [
+      -2.0,
+      2.0
+    ],
+    "finite_difference_step_rad": 1e-06,
+    "min_mass_eigenvalue": 0.10359209647979048,
+    "positive_definite": true,
+    "metrics": {
+      "fk_position": {
+        "max": 1.3472180148700993e-15,
+        "mean": 3.794073388369822e-16,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "m",
+        "reference": "MuJoCo TCP position",
+        "passed": true
+      },
+      "fk_orientation": {
+        "max": 1.0325384565649418e-15,
+        "mean": 3.6765072556513905e-16,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "rad",
+        "reference": "MuJoCo TCP orientation",
+        "passed": true
+      },
+      "flange_position": {
+        "max": 1.1281198993241301e-15,
+        "mean": 3.518418422474249e-16,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "m",
+        "reference": "MuJoCo attachment position",
+        "passed": true
+      },
+      "flange_orientation": {
+        "max": 1.0325384565649418e-15,
+        "mean": 3.6765072556513905e-16,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "rad",
+        "reference": "MuJoCo attachment orientation",
+        "passed": true
+      },
+      "jacobian_mujoco": {
+        "max": 4.107825191113079e-15,
+        "mean": 1.4412685454823215e-15,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "mixed SI",
+        "reference": "mj_jacSite",
+        "passed": true
+      },
+      "jacobian_finite_difference": {
+        "max": 3.4016822691995685e-10,
+        "mean": 1.4155768770845664e-10,
+        "n_samples": 1000,
+        "tolerance": 1e-08,
+        "unit": "mixed SI",
+        "reference": "central FK difference, epsilon=1e-6 rad",
+        "passed": true
+      },
+      "jacobian_dot": {
+        "max": 1.887379141862766e-15,
+        "mean": 5.699061014774465e-16,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "mixed SI/s",
+        "reference": "mj_jacDot",
+        "passed": true
+      },
+      "mass_relative": {
+        "max": 3.0352458578825977e-15,
+        "mean": 1.0899094110664673e-15,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "relative Frobenius",
+        "reference": "HRCSim mass matrix including armature",
+        "passed": true
+      },
+      "mass_symmetry": {
+        "max": 4.440892098500626e-16,
+        "mean": 8.536791065716365e-17,
+        "n_samples": 1000,
+        "tolerance": 1e-12,
+        "unit": "kg m^2",
+        "reference": "transpose",
+        "passed": true
+      },
+      "gravity": {
+        "max": 6.394884621840902e-14,
+        "mean": 1.8235635224073122e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "N m",
+        "reference": "HRCSim gravity_torque",
+        "passed": true
+      },
+      "coriolis": {
+        "max": 2.4608787230206985e-14,
+        "mean": 4.122090493106131e-15,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "N m",
+        "reference": "MuJoCo bias minus gravity",
+        "passed": true
+      },
+      "forward_eom": {
+        "max": 2.6290081223123707e-13,
+        "mean": 4.427258559758229e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "N m",
+        "reference": "mj_forward",
+        "passed": true
+      },
+      "inverse_eom": {
+        "max": 6.394884621840902e-14,
+        "mean": 1.7745083180642494e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "N m",
+        "reference": "mj_inverse",
+        "passed": true
+      }
+    }
+  },
+  "task": {
+    "seed": 6224,
+    "n_samples": 1000,
+    "rejected_ill_conditioned": 29,
+    "condition_limit": 100000.0,
+    "integration_dt": 1e-06,
+    "velocity_range_rad_s": [
+      -0.1,
+      0.1
+    ],
+    "null_tau0_range_Nm": [
+      -0.2,
+      0.2
+    ],
+    "metrics": {
+      "regularized_acceleration": {
+        "max": 9.997111858872643e-05,
+        "mean": 7.508442421858214e-05,
+        "n_samples": 1000,
+        "tolerance": 0.000101,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "default .01 damping; expected lambda^2 F defect",
+        "passed": true
+      },
+      "regularized_identity": {
+        "max": 3.868856768799052e-12,
+        "mean": 9.86452671025415e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "mixed SI",
+        "reference": "regularized defect minus lambda^2 F",
+        "passed": true
+      },
+      "task_acceleration": {
+        "max": 2.9309887850104133e-12,
+        "mean": 1.0714599433386818e-13,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "mj_forward + analytic Jdot dq",
+        "passed": true
+      },
+      "task_acceleration_fd": {
+        "max": 0.00010548724708137058,
+        "mean": 3.502100214790078e-05,
+        "n_samples": 1000,
+        "tolerance": 0.002,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "forward-integrated TCP velocity difference, dt=1e-6 s",
+        "passed": true
+      },
+      "task_with_damping": {
+        "max": 2.9167779302952113e-12,
+        "mean": 1.0741530928615184e-13,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "mj_forward with passive damping included in mu",
+        "passed": true
+      },
+      "null_acceleration": {
+        "max": 2.8221989465394743e-13,
+        "mean": 2.5125088418253806e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "mj_forward, rest + gravity compensation",
+        "passed": true
+      },
+      "null_acceleration_fd": {
+        "max": 5.13871033351288e-06,
+        "mean": 9.668722836008127e-07,
+        "n_samples": 1000,
+        "tolerance": 0.0001,
+        "unit": "m/s^2 or rad/s^2",
+        "reference": "forward-integrated TCP velocity difference, dt=1e-6 s",
+        "passed": true
+      },
+      "null_algebra": {
+        "max": 1.6402165852982103e-12,
+        "mean": 4.705484260377831e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "mixed SI",
+        "reference": "J M^-1 N",
+        "passed": true
+      },
+      "env_task_terms": {
+        "max": 7.314697216257977e-13,
+        "mean": 2.604492346903592e-14,
+        "n_samples": 1000,
+        "tolerance": 1e-10,
+        "unit": "relative norm",
+        "reference": "HRCSim Lambda/mu/p/Jbar",
+        "passed": true
+      }
+    }
+  },
+  "singularity": {
+    "q": [
+      0.0,
+      0.0,
+      0.0,
+      -0.467002423653011,
+      0.0,
+      0.467002423653011,
+      0.0
+    ],
+    "jacobian_singular_values": [
+      1.9908952618540554,
+      1.795345986147013,
+      0.4953866584225576,
+      0.39817589074377735,
+      0.21662765899462882,
+      1.2366168492327624e-16
+    ],
+    "rank": 5,
+    "damping": 0.01,
+    "smallest_task_inverse_eigenvalue": 2.4037270383771986e-16,
+    "lambda_spectral_norm": 10000.000000001965,
+    "lambda_bound": 10000.0,
+    "damped_null_defect": 0.00046338691975518487,
+    "all_finite": true,
+    "env_all_finite": true,
+    "passed": true
+  },
+  "contacts": {
+    "rim": {
+      "applied_downward_load_N": 5.0,
+      "n_steps": 3000,
+      "steady_samples": 500,
+      "duration_s": 3.0,
+      "steady_duration_s": 0.5,
+      "max_penetration_m": 1.2245990179428464e-07,
+      "mean_penetration_m": 1.2245974719915757e-07,
+      "max_transient_penetration_m": 3.523861266283576e-05,
+      "penetration_tolerance_m": 0.0001,
+      "mean_vertical_force_N": 5.000000111814685,
+      "max_vertical_force_error_N": 1.2413193228866248e-07,
+      "mean_vertical_force_error_N": 1.1181468453180799e-07,
+      "force_tolerance_N": 0.05,
+      "max_individual_normal_force_N": 1.0626836792356735,
+      "max_steady_tcp_speed": 2.2248520513902908e-07,
+      "passed": true
+    },
+    "inside_bottom": {
+      "applied_downward_load_N": 5.0,
+      "n_steps": 3000,
+      "steady_samples": 500,
+      "duration_s": 3.0,
+      "steady_duration_s": 0.5,
+      "max_penetration_m": 1.4405039381916132e-07,
+      "mean_penetration_m": 1.4405033066935455e-07,
+      "max_transient_penetration_m": 3.056481616078478e-05,
+      "penetration_tolerance_m": 0.0001,
+      "mean_vertical_force_N": 4.999999904402151,
+      "max_vertical_force_error_N": 1.0736374367326107e-07,
+      "mean_vertical_force_error_N": 9.559784817270156e-08,
+      "force_tolerance_N": 0.05,
+      "max_individual_normal_force_N": 1.2500418740888875,
+      "max_steady_tcp_speed": 1.5568715096005777e-06,
+      "passed": true
+    }
+  },
+  "hand_impacts": {
+    "mass_kg": 0.6,
+    "stiffness_N_m": 75000.0,
+    "dt_s": 0.001,
+    "contact_solref": [
+      -125000.0,
+      -1.0
+    ],
+    "contact_solimp": [
+      0.95,
+      0.95,
+      0.001
+    ],
+    "solmix": 1000.0,
+    "rows": [
+      {
+        "speed_m_s": 0.1,
+        "peak_N": 21.296101398000292,
+        "reference_N": 21.213203435596427,
+        "relative_error": 0.003907847424154738,
+        "tolerance": 0.02
+      },
+      {
+        "speed_m_s": 0.25,
+        "peak_N": 53.242645191342575,
+        "reference_N": 53.033008588991066,
+        "relative_error": 0.003952945682870923,
+        "tolerance": 0.02
+      },
+      {
+        "speed_m_s": 0.5,
+        "peak_N": 106.48538367498817,
+        "reference_N": 106.06601717798213,
+        "relative_error": 0.0039538252511389016,
+        "tolerance": 0.02
+      }
+    ],
+    "passed": true
+  },
+  "misalignment": {
+    "rows": [
+      {
+        "case": "lateral_0mm",
+        "lateral_m": 0.0,
+        "tilt_deg": 0.0,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.040000022861174656,
+        "success": true,
+        "peak_force": 21.005939181982715,
+        "peak_normal_force": 12.233851314854356,
+        "peak_normal_sum": 20.120040697846385,
+        "peak_wall_force": 0.0,
+        "lateral_error": 8.004555798389253e-05,
+        "outcome": "inserted"
+      },
+      {
+        "case": "lateral_0.5mm",
+        "lateral_m": 0.0005,
+        "tilt_deg": 0.0,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.040000022861182094,
+        "success": true,
+        "peak_force": 22.736289445418265,
+        "peak_normal_force": 12.408390758670643,
+        "peak_normal_sum": 24.93769848050999,
+        "peak_wall_force": 22.736289445418265,
+        "lateral_error": 0.0004752834952772739,
+        "outcome": "inserted"
+      },
+      {
+        "case": "lateral_1mm",
+        "lateral_m": 0.001,
+        "tilt_deg": 0.0,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.040000022860802675,
+        "success": true,
+        "peak_force": 116.42574285968166,
+        "peak_normal_force": 57.09032757507894,
+        "peak_normal_sum": 112.71879177793242,
+        "peak_wall_force": 116.42574285968166,
+        "lateral_error": 0.0005000261197993118,
+        "outcome": "inserted"
+      },
+      {
+        "case": "lateral_2mm",
+        "lateral_m": 0.002,
+        "tilt_deg": 0.0,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.040000016687935125,
+        "success": true,
+        "peak_force": 108.96256729670061,
+        "peak_normal_force": 53.26575794616259,
+        "peak_normal_sum": 105.21374381024638,
+        "peak_wall_force": 108.96256729670061,
+        "lateral_error": 0.000500083204622532,
+        "outcome": "inserted"
+      },
+      {
+        "case": "tilt_1deg",
+        "lateral_m": 0.0,
+        "tilt_deg": 1,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.03974093551161975,
+        "success": true,
+        "peak_force": 22.677033374639894,
+        "peak_normal_force": 13.071565277529562,
+        "peak_normal_sum": 21.9388412652005,
+        "peak_wall_force": 20.36973970445395,
+        "lateral_error": 0.00015274502377631582,
+        "outcome": "inserted"
+      },
+      {
+        "case": "tilt_2deg",
+        "lateral_m": 0.0,
+        "tilt_deg": 2,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.003,
+        "depth": 0.03468737850154219,
+        "success": true,
+        "peak_force": 48.00148193784949,
+        "peak_normal_force": 37.24736430857508,
+        "peak_normal_sum": 119.10879326905048,
+        "peak_wall_force": 48.00148193784949,
+        "lateral_error": 0.0005086304024152196,
+        "outcome": "partial"
+      },
+      {
+        "case": "yaw_1deg",
+        "lateral_m": 0.0,
+        "tilt_deg": 0.0,
+        "yaw_deg": 1,
+        "chamfer_m": 0.003,
+        "depth": 0.0400000228612129,
+        "success": true,
+        "peak_force": 20.996740114772887,
+        "peak_normal_force": 12.667691461865768,
+        "peak_normal_sum": 20.111229585935973,
+        "peak_wall_force": 0.0,
+        "lateral_error": 8.00875897010807e-05,
+        "outcome": "inserted"
+      },
+      {
+        "case": "yaw_2deg",
+        "lateral_m": 0.0,
+        "tilt_deg": 0.0,
+        "yaw_deg": 2,
+        "chamfer_m": 0.003,
+        "depth": 0.039523742044814264,
+        "success": true,
+        "peak_force": 71.12949473576013,
+        "peak_normal_force": 59.12762266235668,
+        "peak_normal_sum": 99.86324722011742,
+        "peak_wall_force": 71.12949473576013,
+        "lateral_error": 9.954568238782858e-09,
+        "outcome": "inserted"
+      },
+      {
+        "case": "sharp_lateral_1mm",
+        "lateral_m": 0.001,
+        "tilt_deg": 0.0,
+        "yaw_deg": 0.0,
+        "chamfer_m": 0.0,
+        "depth": 8.678245894039316e-05,
+        "success": false,
+        "peak_force": 90.65161803932301,
+        "peak_normal_force": 25.28744675661944,
+        "peak_normal_sum": 86.82850261367457,
+        "peak_wall_force": 90.65161803932301,
+        "lateral_error": 0.0010828588089832971,
+        "outcome": "jammed"
+      }
+    ],
+    "passed": true
+  },
+  "passed": true
+}

@@ -1,0 +1,48 @@
+\documentclass[conference,a4paper]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{url} % line breaking for URLs in the bibliography
+\graphicspath{{figures/}}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Task/section placeholders: everything in red is unfinished prose.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\begin{document}
+
+\title{Safe Human--Robot Collaborative Assembly via Learning from Demonstration and Variable Impedance Control}
+
+\author{\IEEEauthorblockN{Member A, Member B, Member C, Member D, and Member E}
+\IEEEauthorblockA{\textit{Placeholder Affiliation} \\
+Placeholder Department, Placeholder University\\
+Placeholder City, Placeholder Country}}
+
+\maketitle
+
+\begin{abstract}
+\input{sections/00_abstract}
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_requirements_architecture}
+\input{sections/04_method}
+\input{sections/05_safety}
+\input{sections/06_experiments}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+
+% remove when all refs are cited in text
+\nocite{*}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{document}

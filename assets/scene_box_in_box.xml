@@ -1,0 +1,58 @@
+<mujoco model="HRC box-in-box insertion">
+  <include file="panda_torque.xml" />
+  <statistic center="0.3 0 0.35" extent="1.2" />
+  <visual>
+    <global offwidth="1280" offheight="960" />
+    <quality shadowsize="2048" />
+  </visual>
+  <asset>
+    <texture name="ground" type="2d" builtin="checker" rgb1="0.16 0.19 0.23" rgb2="0.20 0.23 0.27" width="512" height="512" />
+    <material name="ground_mat" texture="ground" texrepeat="3 3" reflectance="0.1" />
+  </asset>
+  <default>
+    <!-- 4 ms >= 2*dt: hard contacts resolved over several 1 ms steps.
+         Elliptic cone + sliding friction 0.3 avoids excessive insertion stiction.
+         solimp ramps smoothly over 1 mm; no artificial adhesion or contact margin. -->
+    <geom friction="0.3 0.005 0.0001" solref="0.004 1" solimp="0.95 0.99 0.001" condim="3" />
+  </default>
+  <worldbody>
+    <light pos="0.3 -0.5 1.8" dir="0 0 -1" diffuse="0.8 0.8 0.8" />
+    <camera name="insertion" pos="1.2 -1.0 0.85" xyaxes="0.819 0.573 0 -0.245 0.350 0.904" />
+    <geom name="floor" type="plane" size="2 2 0.1" material="ground_mat" />
+    <body name="table" pos="0.5 0 0.2">
+      <geom name="table_top" type="box" pos="0 0 -0.02" size="0.20 0.20 0.02" rgba="0.32 0.36 0.42 1" />
+      <geom name="table_leg" type="box" pos="0 0 -0.12" size="0.045 0.045 0.08" rgba="0.22 0.25 0.30 1" />
+    </body>
+    <body name="fixture" pos="0.5 0.0 0.28" quat="1.0 0.0 0.0 0.0">
+      <geom name="hole_xplus" type="box" pos="0.035500000000000004 0.0 -0.021500000000000002" size="0.02 0.0555 0.0185" rgba="0.25 0.48 0.64 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="hole_xminus" type="box" pos="-0.035500000000000004 0.0 -0.021500000000000002" size="0.02 0.0555 0.0185" rgba="0.25 0.48 0.64 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="hole_yplus" type="box" pos="0.0 0.035500000000000004 -0.021500000000000002" size="0.0155 0.02 0.0185" rgba="0.25 0.48 0.64 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="hole_yminus" type="box" pos="0.0 -0.035500000000000004 -0.021500000000000002" size="0.0155 0.02 0.0185" rgba="0.25 0.48 0.64 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="hole_floor" type="box" pos="0.0 0.0 -0.06" size="0.0555 0.0555 0.02" rgba="0.20 0.39 0.52 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <site name="hole_top" pos="0 0 0" size="0.002" rgba="0 1 0 1" />
+      <site name="hole_bottom" pos="0.0 0.0 -0.04" size="0.002" rgba="1 0 0 1" />
+      <geom name="chamfer_hole_xplus" pos="0.017750000000000002 0.0 -0.0022500000000000003" quat="0.9238795325112867 0.0 0.3826834323650898 0.0" size="0.0010606601717798212 0.0555 0.0021213203435596424" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="rim_hole_xplus" pos="0.037000000000000005 0.0 -0.0015" size="0.0185 0.0555 0.0015" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="chamfer_hole_xminus" pos="-0.017750000000000002 0.0 -0.0022500000000000003" quat="0.9238795325112867 0.0 -0.3826834323650898 0.0" size="0.0010606601717798212 0.0555 0.0021213203435596424" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="rim_hole_xminus" pos="-0.037000000000000005 0.0 -0.0015" size="0.0185 0.0555 0.0015" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="chamfer_hole_yplus" pos="0.0 0.017750000000000002 -0.0022500000000000003" quat="0.9238795325112867 -0.3826834323650898 0.0 0.0" size="0.0555 0.0010606601717798212 0.0021213203435596424" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="rim_hole_yplus" pos="0.0 0.037000000000000005 -0.0015" size="0.0185 0.0185 0.0015" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="chamfer_hole_yminus" pos="0.0 -0.017750000000000002 -0.0022500000000000003" quat="0.9238795325112867 0.3826834323650898 0.0 0.0" size="0.0555 0.0010606601717798212 0.0021213203435596424" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+      <geom name="rim_hole_yminus" pos="0.0 -0.037000000000000005 -0.0015" size="0.0185 0.0185 0.0015" type="box" rgba="0.30 0.55 0.70 1" friction="0.3 0.005 0.0001" solref="0.004 1.0" solimp="0.95 0.99 0.001" />
+    </body>
+    <body name="hand_target" mocap="true" pos="2 0 1" />
+    <!-- Dynamic hand has 7 qpos/6 dofs in addition to the 7 arm joints.
+         gravcomp prevents falling while parked; the target weld keeps it parked.
+         Capsule total length 0.18 m (cylinder 0.10 m plus two 0.04 m caps). -->
+    <body name="human_hand" pos="2 0 1" gravcomp="1">
+      <freejoint name="hand_free" />
+      <geom name="hand" type="capsule" size="0.04 0.05" mass="0.6" contype="0" conaffinity="0" rgba="0.88 0.60 0.48 0.65" solref="-125000 -1" solimp=".95 .95 .001" solmix="1000" />
+    </body>
+  </worldbody>
+  <equality>
+    <weld name="hand_weld" body1="hand_target" body2="human_hand" solref="0.002 1" solimp="0.95 0.99 0.001" />
+  </equality>
+  <keyframe>
+    <key name="home" qpos="0 -0.181472146 0 -2.121642174 0 1.940170028 0.7853981633974483 2 0 1 1 0 0 0" />
+  </keyframe>
+</mujoco>
